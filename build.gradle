@@ -24,7 +24,8 @@ repositories {
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:22.0'
-
+	compile 'com.pi4j:pi4j-core:1.1'
+	
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }
