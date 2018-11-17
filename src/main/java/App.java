@@ -13,8 +13,15 @@ public class App {
     public static byte INIT_CMD = (byte) 0xD0; // 11010000
  
     public static void main(String args[]) throws InterruptedException, IOException {
-        System.out.println("<--Pi4J--> SPI test program using MCP3008 AtoD Chip");
+    	byte x = (byte)(0x08);
+    	System.out.println(x);;
+    	x = (byte) (x<<4);
+    	System.out.println(x);;
+    }	
  
+    public static void run() throws Exception {
+        System.out.println("<--Pi4J--> SPI test program using MCP3008 AtoD Chip");
+        
         spi = SpiFactory.getInstance(SpiChannel.CS0,
                                      SpiDevice.DEFAULT_SPI_SPEED, // default spi speed 1 MHz
                                      SpiDevice.DEFAULT_SPI_MODE); // default spi mode 0
@@ -23,10 +30,10 @@ public class App {
             read(0); // Read channel 1
             read(1); // Read channel 2
             read(2); // Read channel 3
-            Thread.sleep(100);
+            Thread.sleep(5000);
         }
     }
- 
+    
     public static void read(int channel) throws IOException {
         // 10-bit ADC MCP3008
         byte packet[] = new byte[3];
@@ -35,6 +42,10 @@ public class App {
         packet[2] = 0x00;
             
         byte[] result = spi.write(packet);
+        System.out.println("Size of result: "+result.length);
+        System.out.println("[1]: "+result[1]+", "+Integer.toBinaryString(result[1]));
+        System.out.println("[1]: "+result[2]+", "+Integer.toBinaryString(result[2]));
+        
         System.out.println("Channel "+channel+":" + (((result[1] & 0x03 ) << 8) | (result[2] & 0xff) ));
     }
 }
