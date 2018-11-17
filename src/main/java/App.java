@@ -22,7 +22,7 @@ public class App {
         while(true) {
             read(0); // Read channel 1
             read(1); // Read channel 2
-            read(1); // Read channel 2
+            read(2); // Read channel 3
             Thread.sleep(100);
         }
     }
