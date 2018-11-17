@@ -22,6 +22,7 @@ public class App {
         while(true) {
             read(0); // Read channel 1
             read(1); // Read channel 2
+            read(1); // Read channel 2
             Thread.sleep(100);
         }
     }
@@ -34,6 +35,6 @@ public class App {
         packet[2] = 0x00;
             
         byte[] result = spi.write(packet);
-        System.out.println( ((result[1] & 0x03 ) << 8) | (result[2] & 0xff) );
+        System.out.println("Channel "+channel+":" + (((result[1] & 0x03 ) << 8) | (result[2] & 0xff) ));
     }
 }
