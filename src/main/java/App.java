@@ -41,7 +41,7 @@ public class App {
         byte[] result = spi.write(packet);
         System.out.println("Size of result: "+result.length);
         System.out.println("Channel "+channel+":" +"[1]: "+result[1]+", "+Integer.toBinaryString(result[1]));
-        System.out.println("Channel "+channel+":" +"[2]: "+result[2]+", "+Integer.toBinaryString(result[2]));
+        System.out.println("Channel "+channel+":" +"[2]: "+result[2]+", "+Integer.toBinaryString(result[2]&0xff));
         
         System.out.println("Channel "+channel+":" + (((result[1] & 0x03 ) << 8) | (result[2] & 0xff) ));
     }
