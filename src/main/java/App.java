@@ -12,11 +12,8 @@ public class App {
     public static SpiDevice spi = null;
     public static byte INIT_CMD = (byte) 0xD0; // 11010000
  
-    public static void main(String args[]) throws InterruptedException, IOException {
-    	byte x = (byte)(0x08);
-    	System.out.println(x);;
-    	x = (byte) (x<<4);
-    	System.out.println(x);;
+    public static void main(String args[]) throws Exception, InterruptedException, IOException {
+    	run();
     }	
  
     public static void run() throws Exception {
